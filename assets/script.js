@@ -5,7 +5,7 @@
 // });
 
 var today = dayjs();
-$('#currentDay').text(today.format('MMM D, YYYY, h:mm:ss a'));
+$('#currentDay').text(today.format('MMM D, YYYY'));
 
 // $(window).load(function() {
 // });
