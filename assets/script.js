@@ -1,25 +1,12 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-// $(window).load(function() {
-// });
+$("body").wrapAll;
 
 var today = dayjs();
 $('#currentDay').text(today.format('MMM D, YYYY'));
 
-
-// TODO: Add a listener for click events on the save button. This code should
-// use the id in the containing time-block as a key to save the user input in
-// local storage. HINT: What does `this` reference in the click listener
-// function? How can DOM traversal be used to get the "hour-x" id of the
-// time-block containing the button that was clicked? How might the id be
-// useful when saving the description in local storage?
-
 var saveButtons = document.querySelectorAll("button.saveBtn");
 var textareas = document.querySelectorAll("textarea.description");
 saveButtons.forEach((btn, i) => {
-  btn.addEventListener("click", function (event) {
-    //event.preventDefault();
+  btn.addEventListener("click", function () {
     const textarea = textareas[i]
     console.log(textarea.value)
     localStorage.setItem(`calendar_item_${i}`, textarea.value)
@@ -27,7 +14,6 @@ saveButtons.forEach((btn, i) => {
   });
 })
 
-// TODO
 function renderSavedCalendarItems() {
   textareas.forEach((textarea, i) => {
     var text = localStorage.getItem(`calendar_item_${i}`);
